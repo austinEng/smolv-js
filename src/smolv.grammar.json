@@ -1,0 +1,16 @@
+{
+  "_comment": "Additional instructions for smolv",
+  "instructions": [
+    {
+      "opname": "OpVectorShuffleCompact",
+      "opcode": 13,
+      "operands": [
+          { "kind" : "IdResultType" },
+          { "kind" : "IdResult" },
+          { "kind" : "IdRef",                              "name" : "'Vector 1'" },
+          { "kind" : "IdRef",                              "name" : "'Vector 2'" },
+          { "kind" : "LiteralInteger", "quantifier" : "*", "name" : "'Components'" }
+      ]
+    }
+  ]
+}

@@ -34,8 +34,9 @@ const makeConfig = ({ target, extPrefix }) => ({
                         hoist_props: true,
                         keep_fargs: false, // You need this for code which relies on Function.length
                         module: true,
-                        passes: 3,
+                        passes: 2,
                         unsafe_arrows: true, //  Note: it is not always safe to perform this conversion if code relies on the the function having a prototype, which arrow functions lack.
+                        warnings: true,
                     },
                     mangle: true,
                 }

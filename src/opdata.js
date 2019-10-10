@@ -2,209 +2,209 @@ module.exports = [
     [0, 0], // Nop
     [0, 0], // Undef
     [0, 0], // SourceContinued
-    [0, 1], // Source
+    [1, 0], // Source
     [0, 0], // SourceExtension
     [0, 0], // Name
     [0, 0], // MemberName
     [0, 0], // String
-    [0, 1], // Line
+    [1, 0], // Line
     [0, 0], // #9
     [0, 0], // Extension
     [0, 0], // ExtInstImport
-    [0, 1], // ExtInst
-    [2, 1], // VectorShuffleCompact - new in SMOLV
-    [0, 1], // MemoryModel
-    [0, 1], // EntryPoint
-    [0, 1], // ExecutionMode
-    [0, 1], // Capability
+    [1, 0], // ExtInst
+    [1, 2], // VectorShuffleCompact - new in SMOLV
+    [1, 0], // MemoryModel
+    [1, 0], // EntryPoint
+    [1, 0], // ExecutionMode
+    [1, 0], // Capability
     [0, 0], // #18
-    [0, 1], // TypeVoid
-    [0, 1], // TypeBool
-    [0, 1], // TypeInt
-    [0, 1], // TypeFloat
-    [0, 1], // TypeVector
-    [0, 1], // TypeMatrix
-    [0, 1], // TypeImage
-    [0, 1], // TypeSampler
-    [0, 1], // TypeSampledImage
-    [0, 1], // TypeArray
-    [0, 1], // TypeRuntimeArray
-    [0, 1], // TypeStruct
-    [0, 1], // TypeOpaque
-    [0, 1], // TypePointer
-    [0, 1], // TypeFunction
-    [0, 1], // TypeEvent
-    [0, 1], // TypeDeviceEvent
-    [0, 1], // TypeReserveId
-    [0, 1], // TypeQueue
-    [0, 1], // TypePipe
-    [0, 1], // TypeForwardPointer
+    [1, 0], // TypeVoid
+    [1, 0], // TypeBool
+    [1, 0], // TypeInt
+    [1, 0], // TypeFloat
+    [1, 0], // TypeVector
+    [1, 0], // TypeMatrix
+    [1, 0], // TypeImage
+    [1, 0], // TypeSampler
+    [1, 0], // TypeSampledImage
+    [1, 0], // TypeArray
+    [1, 0], // TypeRuntimeArray
+    [1, 0], // TypeStruct
+    [1, 0], // TypeOpaque
+    [1, 0], // TypePointer
+    [1, 0], // TypeFunction
+    [1, 0], // TypeEvent
+    [1, 0], // TypeDeviceEvent
+    [1, 0], // TypeReserveId
+    [1, 0], // TypeQueue
+    [1, 0], // TypePipe
+    [1, 0], // TypeForwardPointer
     [0, 0], // #40
     [0, 0], // ConstantTrue
     [0, 0], // ConstantFalse
     [0, 0], // Constant
-    [9, 0], // ConstantComposite
-    [0, 1], // ConstantSampler
+    [0, 9], // ConstantComposite
+    [1, 0], // ConstantSampler
     [0, 0], // ConstantNull
     [0, 0], // #47
     [0, 0], // SpecConstantTrue
     [0, 0], // SpecConstantFalse
     [0, 0], // SpecConstant
-    [9, 0], // SpecConstantComposite
+    [0, 9], // SpecConstantComposite
     [0, 0], // SpecConstantOp
     [0, 0], // #53
-    [0, 1], // Function
+    [1, 0], // Function
     [0, 0], // FunctionParameter
     [0, 0], // FunctionEnd
-    [9, 0], // FunctionCall
+    [0, 9], // FunctionCall
     [0, 0], // #58
-    [0, 1], // Variable
+    [1, 0], // Variable
     [0, 0], // ImageTexelPointer
     [1, 1], // Load
-    [2, 1], // Store
+    [1, 2], // Store
     [0, 0], // CopyMemory
     [0, 0], // CopyMemorySized
-    [0, 1], // AccessChain
+    [1, 0], // AccessChain
     [0, 0], // InBoundsAccessChain
     [0, 0], // PtrAccessChain
     [0, 0], // ArrayLength
     [0, 0], // GenericPtrMemSemantics
     [0, 0], // InBoundsPtrAccessChain
-    [0, 1], // Decorate
-    [0, 1], // MemberDecorate
+    [1, 0], // Decorate
+    [1, 0], // MemberDecorate
     [0, 0], // DecorationGroup
     [0, 0], // GroupDecorate
     [0, 0], // GroupMemberDecorate
     [0, 0], // #76
     [1, 1], // VectorExtractDynamic
-    [2, 1], // VectorInsertDynamic
-    [2, 1], // VectorShuffle
-    [9, 0], // CompositeConstruct
+    [1, 2], // VectorInsertDynamic
+    [1, 2], // VectorShuffle
+    [0, 9], // CompositeConstruct
     [1, 1], // CompositeExtract
-    [2, 1], // CompositeInsert
-    [1, 0], // CopyObject
+    [1, 2], // CompositeInsert
+    [0, 1], // CopyObject
     [0, 0], // Transpose
     [0, 0], // #85
     [0, 0], // SampledImage
-    [2, 1], // ImageSampleImplicitLod
-    [2, 1], // ImageSampleExplicitLod
-    [3, 1], // ImageSampleDrefImplicitLod
-    [3, 1], // ImageSampleDrefExplicitLod
-    [2, 1], // ImageSampleProjImplicitLod
-    [2, 1], // ImageSampleProjExplicitLod
-    [3, 1], // ImageSampleProjDrefImplicitLod
-    [3, 1], // ImageSampleProjDrefExplicitLod
-    [2, 1], // ImageFetch
-    [3, 1], // ImageGather
-    [3, 1], // ImageDrefGather
-    [2, 1], // ImageRead
-    [3, 1], // ImageWrite
-    [1, 0], // Image
-    [1, 0], // ImageQueryFormat
-    [1, 0], // ImageQueryOrder
-    [2, 0], // ImageQuerySizeLod
-    [1, 0], // ImageQuerySize
-    [2, 0], // ImageQueryLod
-    [1, 0], // ImageQueryLevels
-    [1, 0], // ImageQuerySamples
+    [1, 2], // ImageSampleImplicitLod
+    [1, 2], // ImageSampleExplicitLod
+    [1, 3], // ImageSampleDrefImplicitLod
+    [1, 3], // ImageSampleDrefExplicitLod
+    [1, 2], // ImageSampleProjImplicitLod
+    [1, 2], // ImageSampleProjExplicitLod
+    [1, 3], // ImageSampleProjDrefImplicitLod
+    [1, 3], // ImageSampleProjDrefExplicitLod
+    [1, 2], // ImageFetch
+    [1, 3], // ImageGather
+    [1, 3], // ImageDrefGather
+    [1, 2], // ImageRead
+    [1, 3], // ImageWrite
+    [0, 1], // Image
+    [0, 1], // ImageQueryFormat
+    [0, 1], // ImageQueryOrder
+    [0, 2], // ImageQuerySizeLod
+    [0, 1], // ImageQuerySize
+    [0, 2], // ImageQueryLod
+    [0, 1], // ImageQueryLevels
+    [0, 1], // ImageQuerySamples
     [0, 0], // #108
-    [1, 0], // ConvertFToU
-    [1, 0], // ConvertFToS
-    [1, 0], // ConvertSToF
-    [1, 0], // ConvertUToF
-    [1, 0], // UConvert
-    [1, 0], // SConvert
-    [1, 0], // FConvert
-    [1, 0], // QuantizeToF16
-    [1, 0], // ConvertPtrToU
-    [1, 0], // SatConvertSToU
-    [1, 0], // SatConvertUToS
-    [1, 0], // ConvertUToPtr
-    [1, 0], // PtrCastToGeneric
-    [1, 0], // GenericCastToPtr
+    [0, 1], // ConvertFToU
+    [0, 1], // ConvertFToS
+    [0, 1], // ConvertSToF
+    [0, 1], // ConvertUToF
+    [0, 1], // UConvert
+    [0, 1], // SConvert
+    [0, 1], // FConvert
+    [0, 1], // QuantizeToF16
+    [0, 1], // ConvertPtrToU
+    [0, 1], // SatConvertSToU
+    [0, 1], // SatConvertUToS
+    [0, 1], // ConvertUToPtr
+    [0, 1], // PtrCastToGeneric
+    [0, 1], // GenericCastToPtr
     [1, 1], // GenericCastToPtrExplicit
-    [1, 0], // Bitcast
+    [0, 1], // Bitcast
     [0, 0], // #125
-    [1, 0], // SNegate
-    [1, 0], // FNegate
-    [2, 0], // IAdd
-    [2, 0], // FAdd
-    [2, 0], // ISub
-    [2, 0], // FSub
-    [2, 0], // IMul
-    [2, 0], // FMul
-    [2, 0], // UDiv
-    [2, 0], // SDiv
-    [2, 0], // FDiv
-    [2, 0], // UMod
-    [2, 0], // SRem
-    [2, 0], // SMod
-    [2, 0], // FRem
-    [2, 0], // FMod
-    [2, 0], // VectorTimesScalar
-    [2, 0], // MatrixTimesScalar
-    [2, 0], // VectorTimesMatrix
-    [2, 0], // MatrixTimesVector
-    [2, 0], // MatrixTimesMatrix
-    [2, 0], // OuterProduct
-    [2, 0], // Dot
-    [2, 0], // IAddCarry
-    [2, 0], // ISubBorrow
-    [2, 0], // UMulExtended
-    [2, 0], // SMulExtended
+    [0, 1], // SNegate
+    [0, 1], // FNegate
+    [0, 2], // IAdd
+    [0, 2], // FAdd
+    [0, 2], // ISub
+    [0, 2], // FSub
+    [0, 2], // IMul
+    [0, 2], // FMul
+    [0, 2], // UDiv
+    [0, 2], // SDiv
+    [0, 2], // FDiv
+    [0, 2], // UMod
+    [0, 2], // SRem
+    [0, 2], // SMod
+    [0, 2], // FRem
+    [0, 2], // FMod
+    [0, 2], // VectorTimesScalar
+    [0, 2], // MatrixTimesScalar
+    [0, 2], // VectorTimesMatrix
+    [0, 2], // MatrixTimesVector
+    [0, 2], // MatrixTimesMatrix
+    [0, 2], // OuterProduct
+    [0, 2], // Dot
+    [0, 2], // IAddCarry
+    [0, 2], // ISubBorrow
+    [0, 2], // UMulExtended
+    [0, 2], // SMulExtended
     [0, 0], // #153
-    [1, 0], // Any
-    [1, 0], // All
-    [1, 0], // IsNan
-    [1, 0], // IsInf
-    [1, 0], // IsFinite
-    [1, 0], // IsNormal
-    [1, 0], // SignBitSet
-    [2, 0], // LessOrGreater
-    [2, 0], // Ordered
-    [2, 0], // Unordered
-    [2, 0], // LogicalEqual
-    [2, 0], // LogicalNotEqual
-    [2, 0], // LogicalOr
-    [2, 0], // LogicalAnd
-    [1, 0], // LogicalNot
-    [3, 0], // Select
-    [2, 0], // IEqual
-    [2, 0], // INotEqual
-    [2, 0], // UGreaterThan
-    [2, 0], // SGreaterThan
-    [2, 0], // UGreaterThanEqual
-    [2, 0], // SGreaterThanEqual
-    [2, 0], // ULessThan
-    [2, 0], // SLessThan
-    [2, 0], // ULessThanEqual
-    [2, 0], // SLessThanEqual
-    [2, 0], // FOrdEqual
-    [2, 0], // FUnordEqual
-    [2, 0], // FOrdNotEqual
-    [2, 0], // FUnordNotEqual
-    [2, 0], // FOrdLessThan
-    [2, 0], // FUnordLessThan
-    [2, 0], // FOrdGreaterThan
-    [2, 0], // FUnordGreaterThan
-    [2, 0], // FOrdLessThanEqual
-    [2, 0], // FUnordLessThanEqual
-    [2, 0], // FOrdGreaterThanEqual
-    [2, 0], // FUnordGreaterThanEqual
+    [0, 1], // Any
+    [0, 1], // All
+    [0, 1], // IsNan
+    [0, 1], // IsInf
+    [0, 1], // IsFinite
+    [0, 1], // IsNormal
+    [0, 1], // SignBitSet
+    [0, 2], // LessOrGreater
+    [0, 2], // Ordered
+    [0, 2], // Unordered
+    [0, 2], // LogicalEqual
+    [0, 2], // LogicalNotEqual
+    [0, 2], // LogicalOr
+    [0, 2], // LogicalAnd
+    [0, 1], // LogicalNot
+    [0, 3], // Select
+    [0, 2], // IEqual
+    [0, 2], // INotEqual
+    [0, 2], // UGreaterThan
+    [0, 2], // SGreaterThan
+    [0, 2], // UGreaterThanEqual
+    [0, 2], // SGreaterThanEqual
+    [0, 2], // ULessThan
+    [0, 2], // SLessThan
+    [0, 2], // ULessThanEqual
+    [0, 2], // SLessThanEqual
+    [0, 2], // FOrdEqual
+    [0, 2], // FUnordEqual
+    [0, 2], // FOrdNotEqual
+    [0, 2], // FUnordNotEqual
+    [0, 2], // FOrdLessThan
+    [0, 2], // FUnordLessThan
+    [0, 2], // FOrdGreaterThan
+    [0, 2], // FUnordGreaterThan
+    [0, 2], // FOrdLessThanEqual
+    [0, 2], // FUnordLessThanEqual
+    [0, 2], // FOrdGreaterThanEqual
+    [0, 2], // FUnordGreaterThanEqual
     [0, 0], // #192
     [0, 0], // #193
-    [2, 0], // ShiftRightLogical
-    [2, 0], // ShiftRightArithmetic
-    [2, 0], // ShiftLeftLogical
-    [2, 0], // BitwiseOr
-    [2, 0], // BitwiseXor
-    [2, 0], // BitwiseAnd
-    [1, 0], // Not
-    [4, 0], // BitFieldInsert
-    [3, 0], // BitFieldSExtract
-    [3, 0], // BitFieldUExtract
-    [1, 0], // BitReverse
-    [1, 0], // BitCount
+    [0, 2], // ShiftRightLogical
+    [0, 2], // ShiftRightArithmetic
+    [0, 2], // ShiftLeftLogical
+    [0, 2], // BitwiseOr
+    [0, 2], // BitwiseXor
+    [0, 2], // BitwiseAnd
+    [0, 1], // Not
+    [0, 4], // BitFieldInsert
+    [0, 3], // BitFieldSExtract
+    [0, 3], // BitFieldUExtract
+    [0, 1], // BitReverse
+    [0, 1], // BitCount
     [0, 0], // #206
     [0, 0], // DPdx
     [0, 0], // DPdy
@@ -223,8 +223,8 @@ module.exports = [
     [0, 0], // EndStreamPrimitive
     [0, 0], // #222
     [0, 0], // #223
-    [3, 0], // ControlBarrier
-    [2, 0], // MemoryBarrier
+    [0, 3], // ControlBarrier
+    [0, 2], // MemoryBarrier
     [0, 0], // #226
     [0, 0], // AtomicLoad
     [0, 0], // AtomicStore
@@ -245,11 +245,11 @@ module.exports = [
     [0, 0], // #243
     [0, 0], // #244
     [0, 0], // Phi
-    [2, 1], // LoopMerge
+    [1, 2], // LoopMerge
     [1, 1], // SelectionMerge
     [0, 0], // Label
-    [1, 0], // Branch
-    [3, 1], // BranchConditional
+    [0, 1], // Branch
+    [1, 3], // BranchConditional
     [0, 0], // Switch
     [0, 0], // Kill
     [0, 0], // Return
@@ -304,18 +304,18 @@ module.exports = [
     [0, 0], // CaptureEventProfilingInfo
     [0, 0], // GetDefaultQueue
     [0, 0], // BuildNDRange
-    [2, 1], // ImageSparseSampleImplicitLod
-    [2, 1], // ImageSparseSampleExplicitLod
-    [3, 1], // ImageSparseSampleDrefImplicitLod
-    [3, 1], // ImageSparseSampleDrefExplicitLod
-    [2, 1], // ImageSparseSampleProjImplicitLod
-    [2, 1], // ImageSparseSampleProjExplicitLod
-    [3, 1], // ImageSparseSampleProjDrefImplicitLod
-    [3, 1], // ImageSparseSampleProjDrefExplicitLod
-    [2, 1], // ImageSparseFetch
-    [3, 1], // ImageSparseGather
-    [3, 1], // ImageSparseDrefGather
-    [1, 0], // ImageSparseTexelsResident
+    [1, 2], // ImageSparseSampleImplicitLod
+    [1, 2], // ImageSparseSampleExplicitLod
+    [1, 3], // ImageSparseSampleDrefImplicitLod
+    [1, 3], // ImageSparseSampleDrefExplicitLod
+    [1, 2], // ImageSparseSampleProjImplicitLod
+    [1, 2], // ImageSparseSampleProjExplicitLod
+    [1, 3], // ImageSparseSampleProjDrefImplicitLod
+    [1, 3], // ImageSparseSampleProjDrefExplicitLod
+    [1, 2], // ImageSparseFetch
+    [1, 3], // ImageSparseGather
+    [1, 3], // ImageSparseDrefGather
+    [0, 1], // ImageSparseTexelsResident
     [0, 0], // NoLine
     [0, 0], // AtomicFlagTestAndSet
     [0, 0], // AtomicFlagClear
@@ -327,7 +327,7 @@ module.exports = [
     [0, 0], // GetKernelLocalSizeForSubgroupCount
     [0, 0], // GetKernelMaxNumSubgroups
     [0, 0], // TypeNamedBarrier
-    [0, 1], // NamedBarrierInitialize
-    [2, 1], // MemoryNamedBarrier
+    [1, 0], // NamedBarrierInitialize
+    [1, 2], // MemoryNamedBarrier
     [0, 0], // ModuleProcessed
 ];

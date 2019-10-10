@@ -40,35 +40,35 @@ export type DataCursor = {
 export const SmolvHeaderMagic = 0x534D4F4C; // "SMOL"
 
 export function smolvOpHasResult(op: number): boolean {
-    return op >= 0 && op < KnownOpsCount && SpirvOpData(op).hasResult;
+    return op >= 0 && op < KnownOpsCount && SpirvOpData(op)[0] > 0;
 }
 
 export function smolvOpHasType(op: number): boolean {
-    return op >= 0 && op < KnownOpsCount && SpirvOpData(op).hasType;
+    return op >= 0 && op < KnownOpsCount && SpirvOpData(op)[1] > 0;
+}
+
+export function smolvOpVarRest(op: number): boolean {
+    return op >= 0 && op < KnownOpsCount && SpirvOpData(op)[2] > 0;
 }
 
 export function smolvOpDeltaFromResult(op: number): number {
     if (op < 0 || op > KnownOpsCount) {
         return 0;
     }
-    return SpirvOpData(op).deltaFromResult;
-}
-
-export function smolvOpVarRest(op: number): boolean {
-    return op >= 0 && op < KnownOpsCount && SpirvOpData(op).varrest;
+    return SpirvOpData(op)[3];
 }
 
 export function smolvOpDebugInfo(op: number): boolean {
     return (
-        op == SpvOpSourceContinued ||
-        op == SpvOpSource ||
-        op == SpvOpSourceExtension ||
-        op == SpvOpName ||
-        op == SpvOpMemberName ||
-        op == SpvOpString ||
-        op == SpvOpLine ||
-        op == SpvOpNoLine ||
-        op == SpvOpModuleProcessed
+        op === SpvOpSourceContinued ||
+        op === SpvOpSource ||
+        op === SpvOpSourceExtension ||
+        op === SpvOpName ||
+        op === SpvOpMemberName ||
+        op === SpvOpString ||
+        op === SpvOpLine ||
+        op === SpvOpNoLine ||
+        op === SpvOpModuleProcessed
     );
 }
 

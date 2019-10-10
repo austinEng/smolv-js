@@ -43,47 +43,116 @@ ${instructions.filter(ins => ins).map(ins => {
 }).join('\n')}
 };
 
-type OpData = {
-    hasResult: boolean;      // does it have result ID?
-    hasType: boolean;        // does it have type ID?
-    deltaFromResult: number; // How many words after (optional) type+result to write out as deltas from result?
-    varrest: boolean;        // should the rest of words be written in varint encoding?
-};
+type OpData = [
+    number,  // does it have result ID?
+    number,  // does it have type ID?
+    number,  // should the rest of words be written in varint encoding?
+    number,  // How many words after (optional) type+result to write out as deltas from result?
+];
 
-const defaultData: OpData = {
-    hasResult: true,
-    hasType: true,
-    deltaFromResult: 0,
-    varrest: false
-};
+const defaultData: OpData = [1, 1, 0, 0];
 
-const _SpirvOpData = {
-${instructions.filter(i => i).map(ins => {
-    const opData = OpData[ins.opcode];
-    const data = [hasResult(ins), hasType(ins), opData ? opData[0] : 0, opData ? opData[1] : 0];
-    const comment = `[${data.join(', ')}] ${ins.opname}`;
+// We don't use a real enum because it bloats the minified js file.
+type SpvOp = number;
 
-    // Strip defaults to save space. We'll infer them if undefined.
-    const defaults = [1, 1, 0, 0];
-    let i = data.length;
-    for (; i >= 1; --i) if (data[i - 1] !== defaults[i - 1]) break;
-    if (i === 0) return `    /* ${comment} */`;
+// Data is packed into 1 or 2 numbers.
+type CompressedOpData = number | number[];
 
-    const sliced = data.slice(0, i);
+// Consecutive SpvOps store data in an array so that we can omit sequential keys.
+type PackedCompressedData = { [index:number]: CompressedOpData[] };
 
-    return `    /* ${comment} */ ${ins.opcode}: [${sliced.join(', ')}],`
-}).join('\n')}
-};
+// The PackedCompressedData will be unpacked at runtime.
+type UnpackedCompressedData = { [index:number]: CompressedOpData };
+
+const SpirvOpDataCompressed: PackedCompressedData = {\n${(() => {
+    let out = '';
+    let prevOpcode = undefined;
+    let startOpcode = undefined;
+    let curr = [];
+    function flush() {
+        if (startOpcode !== undefined && curr.length > 0) {
+            out += `    ${startOpcode}: [\n${curr.map(e => `    ${e}`).join(',\n')}\n    ],\n`;
+        }
+        curr = [];
+    }
+
+    instructions.filter(i => (i !== undefined)).forEach(ins => {
+        const opData = OpData[ins.opcode];
+        const data = [hasResult(ins), hasType(ins), opData ? opData[0] : 0, opData ? opData[1] : 0];
+        const comment = `[${data.join(', ')}] ${ins.opname}`;
+
+        // Strip defaults to save space. We'll infer them if undefined.
+        const defaults = [1, 1, 0, 0];
+        let i = data.length;
+        for (; i >= 1; --i) if (data[i - 1] !== defaults[i - 1]) break;
+
+        // Skip because it is exactly the default
+        if (i === 0) {
+            out += `    /* ${comment} */\n`;
+            return;
+        }
+
+        if (ins.opcode !== prevOpcode + 1 && prevOpcode !== undefined) {
+            flush();
+            startOpcode = undefined;
+        }
+
+        if (startOpcode === undefined) {
+            startOpcode = ins.opcode;
+        }
+
+        prevOpcode = ins.opcode;
+
+        // Attempt to encode the data as a single number.
+        const v1 = (data[0] << 0) + (data[1] << 1) + (data[2] << 2);
+        const v2 = v1 + (data[3] << 3);
+
+        // If it's a single character, use it.
+        if (v2 < 10) {
+            curr.push(`/* ${comment} */ ${v2}`);
+            return;
+        }
+
+        // If each is a single character, write as a double digit number.
+        if (v1 < 10 && data[3] < 10) {
+            curr.push(`/* ${comment} */ ${v1 * 10 + data[3]}`);
+            return;
+        }
+
+        // Otherwise, write the values as an array separately.
+        curr.push(`/* ${comment} */ [${v1}, ${data[3]}]`);
+    });
+    flush();
+    return out;
+})()}};
+
+const SpirvOpDataUnpacked: UnpackedCompressedData = Object.keys(SpirvOpDataCompressed).reduce((acc, k) => {
+    for (let i = 0; i < SpirvOpDataCompressed[k].length; ++i) {
+        acc[parseInt(k) + i] = SpirvOpDataCompressed[k][i];
+    }
+    return acc;
+}, {});
 
 export const SpirvOpData = (op: number): OpData => {
-    const data = _SpirvOpData[op];
-    if (!data) return defaultData;
-    return {
-        hasResult: data[0] !== undefined ? data[0] : defaultData.hasResult,
-        hasType: data[1] !== undefined ? data[1] : defaultData.hasType,
-        deltaFromResult: data[2] !== undefined ? data[2] : defaultData.deltaFromResult,
-        varrest: data[3] !== undefined ? data[3] : defaultData.varrest,
-    };
+    const data = SpirvOpDataUnpacked[op];
+    if (data === undefined) return defaultData;
+
+    let v1;
+    let deltaFromResult;
+    if (typeof data === 'number') {
+        if (data < 10) {
+            v1 = data;
+            deltaFromResult = (data >> 3) & 1;
+        } else {
+            v1 = Math.floor(data / 10);
+            deltaFromResult = data - 10 * v1;
+        }
+    } else {
+        v1 = data[0];
+        deltaFromResult = data[1];
+    }
+
+    return [v1 & 1, v1 & 2, v1 & 4, deltaFromResult];
 };
 
 `, 'utf-8');
